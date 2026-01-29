@@ -1,3 +1,4 @@
+import PrayerTimesPage from "./pages/PrayerTimesPage";
 import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
@@ -53,11 +54,37 @@ const PRAYER_TIMES = {
 };
 
 // Generate Ramadan Schedule
+const TOTAL_DAYS = 30; // Ramadan 2026 approx
+
 const generateRamadanSchedule = () => {
   const schedule = [];
-  for (let i = 0; i < RAMADAN_DAYS; i++) {
+
+  // Starting & ending realistic times (in minutes)
+  const sehriStart = 5 * 60 + 47; // 05:47
+  const sehriEnd = 5 * 60 + 57; // 05:57
+
+  const iftarStart = 18 * 60 + 25; // 06:25 PM
+  const iftarEnd = 18 * 60 + 19; // 06:19 PM
+
+  for (let i = 0; i < TOTAL_DAYS; i++) {
     const date = new Date(RAMADAN_START);
     date.setDate(date.getDate() + i);
+
+    // Gradual change calculation
+    const sehriTime =
+      sehriStart + ((sehriEnd - sehriStart) / (TOTAL_DAYS - 1)) * i;
+
+    const iftarTime =
+      iftarStart + ((iftarEnd - iftarStart) / (TOTAL_DAYS - 1)) * i;
+
+    const formatTime = (minutes) => {
+      const h = Math.floor(minutes / 60);
+      const m = Math.round(minutes % 60);
+      return `${String(h).padStart(2, "0")}:${String(m).padStart(2, "0")}`;
+    };
+
+    const sehri = formatTime(sehriTime);
+    const iftar = formatTime(iftarTime);
 
     schedule.push({
       day: i + 1,
@@ -65,15 +92,11 @@ const generateRamadanSchedule = () => {
         month: "short",
         day: "numeric",
       }),
-      sehri: "05:20",
-      iftar: "18:35",
-      fajr: PRAYER_TIMES.fajr,
-      dhuhr: PRAYER_TIMES.dhuhr,
-      asr: PRAYER_TIMES.asr,
-      maghrib: PRAYER_TIMES.maghrib,
-      isha: PRAYER_TIMES.isha,
+      sehri, // also fajr
+      iftar, // also maghrib
     });
   }
+
   return schedule;
 };
 
@@ -488,9 +511,7 @@ const SchedulePage = () => {
         <div className="page-header text-center mb-5">
           <Calendar size={48} className="mb-3" />
           <h2 className="page-title">Complete Ramadan Schedule</h2>
-          <p className="page-subtitle">
-            Sehri & Iftar timings for all {RAMADAN_DAYS} days
-          </p>
+          <p className="page-subtitle">Sehri & Iftar timings for all 30 days</p>
         </div>
 
         <div className="schedule-card-premium">
@@ -500,10 +521,8 @@ const SchedulePage = () => {
                 <tr>
                   <th>Day</th>
                   <th>Date</th>
-                  <th>Sehri</th>
-                  <th>Fajr</th>
-                  <th>Iftar</th>
-                  <th>Maghrib</th>
+                  <th>Sehri / Fajr</th>
+                  <th>Iftar / Maghrib</th>
                 </tr>
               </thead>
               <tbody>
@@ -514,9 +533,7 @@ const SchedulePage = () => {
                     </td>
                     <td className="date-cell">{day.date}</td>
                     <td className="sehri-cell">{day.sehri}</td>
-                    <td>{day.fajr}</td>
                     <td className="iftar-cell">{day.iftar}</td>
-                    <td>{day.maghrib}</td>
                   </tr>
                 ))}
               </tbody>
