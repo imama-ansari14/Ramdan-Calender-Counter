@@ -2,24 +2,64 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark px-4">
-      <Link className="navbar-brand" to="/">Ramadan App</Link>
-
-      <div className="collapse navbar-collapse">
-        <ul className="navbar-nav ms-auto">
-          <li className="nav-item">
-            <Link className="nav-link" to="/">Home</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/prayers">Prayer Times</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/calendar">Calendar</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/schedule">Schedule</Link>
-          </li>
-        </ul>
+    <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
+      <div className="container">
+        <Link className="navbar-brand" to="/">
+          <span className="brand-icon">🌙</span>
+          <span className="brand-text">Ramadan 2025</span>
+        </Link>
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${
+                  location.pathname === "/" ? "active" : ""
+                }`}
+                to="/"
+              >
+                Countdown
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${
+                  location.pathname === "/calendar" ? "active" : ""
+                }`}
+                to="/calendar"
+              >
+                Calendar
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${
+                  location.pathname === "/prayers" ? "active" : ""
+                }`}
+                to="/prayers"
+              >
+                Prayer Times
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${
+                  location.pathname === "/schedule" ? "active" : ""
+                }`}
+                to="/schedule"
+              >
+                Full Schedule
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );
