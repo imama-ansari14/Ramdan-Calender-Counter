@@ -1,13 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const Navbar = () => {
+  const location = useLocation(); 
+
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark custom-navbar">
+    <nav className="navbar navbar-expand-lg  custom-navbar">
       <div className="container">
         <Link className="navbar-brand" to="/">
           <span className="brand-icon">🌙</span>
           <span className="brand-text">Ramadan 2025</span>
         </Link>
+
         <button
           className="navbar-toggler"
           type="button"
@@ -16,6 +20,7 @@ const Navbar = () => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="nav-item">
@@ -28,6 +33,7 @@ const Navbar = () => {
                 Countdown
               </Link>
             </li>
+
             <li className="nav-item">
               <Link
                 className={`nav-link ${
@@ -38,6 +44,7 @@ const Navbar = () => {
                 Calendar
               </Link>
             </li>
+
             <li className="nav-item">
               <Link
                 className={`nav-link ${
@@ -48,6 +55,7 @@ const Navbar = () => {
                 Prayer Times
               </Link>
             </li>
+
             <li className="nav-item">
               <Link
                 className={`nav-link ${
