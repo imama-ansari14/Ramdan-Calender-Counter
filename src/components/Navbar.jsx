@@ -23,7 +23,7 @@ const Navbar = () => {
 
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <li className="nav-item">
+            <li className="nav-item d-flex justify-content-center">
               <Link
                 className={`nav-link ${
                   location.pathname === "/" ? "active" : ""
@@ -34,7 +34,7 @@ const Navbar = () => {
               </Link>
             </li>
 
-            <li className="nav-item">
+            <li className="nav-item d-flex justify-content-center">
               <Link
                 className={`nav-link ${
                   location.pathname === "/calendar" ? "active" : ""
@@ -45,7 +45,7 @@ const Navbar = () => {
               </Link>
             </li>
 
-            <li className="nav-item">
+            <li className="nav-item d-flex justify-content-center">
               <Link
                 className={`nav-link ${
                   location.pathname === "/prayers" ? "active" : ""
@@ -56,7 +56,7 @@ const Navbar = () => {
               </Link>
             </li>
 
-            <li className="nav-item">
+            <li className="nav-item d-flex justify-content-center">
               <Link
                 className={`nav-link ${
                   location.pathname === "/schedule" ? "active" : ""
