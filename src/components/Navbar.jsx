@@ -2,7 +2,7 @@ import { Link, useLocation } from "react-router-dom";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 
 const Navbar = () => {
-  const location = useLocation(); 
+  const location = useLocation();
 
   return (
     <nav className="navbar navbar-expand-lg  custom-navbar">
