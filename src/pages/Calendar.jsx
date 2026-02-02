@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Calendar, Clock, Moon } from "lucide-react";
 import CalendarDayCard from "../components/calendarDayCard";
 import { RAMADAN_SCHEDULE } from "../data/ramadanShedule";
-import { STATIC_PRAYER_TIMES } from "../data/prayerTimes";
+import { STATIC_PRAYER_TIMES } from "../data/PrayerTimes";
 
 const CalendarPage = () => {
   const [selectedDay, setSelectedDay] = useState(null);
@@ -13,7 +13,9 @@ const CalendarPage = () => {
         <div className="page-header text-center mb-5">
           <Calendar size={48} className="mb-3" />
           <h2 className="page-title">Ramadan Calendar</h2>
-          <p className="page-subtitle">Click any day to view detailed timings</p>
+          <p className="page-subtitle">
+            Click any day to view detailed timings
+          </p>
         </div>
 
         <div className="row g-3 mb-4">
@@ -34,7 +36,9 @@ const CalendarPage = () => {
         {selectedDay && (
           <div className="detail-card-premium">
             <div className="detail-card-header">
-              <h4>Day {selectedDay} - {RAMADAN_SCHEDULE[selectedDay - 1].date}</h4>
+              <h4>
+                Day {selectedDay} - {RAMADAN_SCHEDULE[selectedDay - 1].date}
+              </h4>
             </div>
             <div className="detail-card-body">
               <div className="row g-4">
@@ -66,23 +70,33 @@ const CalendarPage = () => {
                     </h5>
                     <div className="timing-item">
                       <span className="timing-label">Fajr</span>
-                      <span className="timing-value">{STATIC_PRAYER_TIMES.fajr}</span>
+                      <span className="timing-value">
+                        {STATIC_PRAYER_TIMES.fajr}
+                      </span>
                     </div>
                     <div className="timing-item">
                       <span className="timing-label">Dhuhr</span>
-                      <span className="timing-value">{STATIC_PRAYER_TIMES.dhuhr}</span>
+                      <span className="timing-value">
+                        {STATIC_PRAYER_TIMES.dhuhr}
+                      </span>
                     </div>
                     <div className="timing-item">
                       <span className="timing-label">Asr</span>
-                      <span className="timing-value">{STATIC_PRAYER_TIMES.asr}</span>
+                      <span className="timing-value">
+                        {STATIC_PRAYER_TIMES.asr}
+                      </span>
                     </div>
                     <div className="timing-item">
                       <span className="timing-label">Maghrib</span>
-                      <span className="timing-value">{STATIC_PRAYER_TIMES.maghrib}</span>
+                      <span className="timing-value">
+                        {STATIC_PRAYER_TIMES.maghrib}
+                      </span>
                     </div>
                     <div className="timing-item">
                       <span className="timing-label">Isha</span>
-                      <span className="timing-value">{STATIC_PRAYER_TIMES.isha}</span>
+                      <span className="timing-value">
+                        {STATIC_PRAYER_TIMES.isha}
+                      </span>
                     </div>
                   </div>
                 </div>
