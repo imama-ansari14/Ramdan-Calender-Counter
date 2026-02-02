@@ -1,6 +1,6 @@
 import { useState, useEffect, useMemo } from "react";
 import { Moon, Calendar, MapPin, Star } from "lucide-react";
-import CountdownCard from "../components/Countdown";
+import CountdownCard from "../components/countdown";
 import InfoCard from "../components/Infocard";
 import { getRamadanDates } from "../data/ramadanDates";
 
