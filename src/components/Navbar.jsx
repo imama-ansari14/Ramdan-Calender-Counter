@@ -9,7 +9,7 @@ const Navbar = () => {
       <div className="container">
         <Link className="navbar-brand" to="/">
           <span className="brand-icon">🌙</span>
-          <span className="brand-text">Ramadan 2025</span>
+          <span className="brand-text">Ramadan 2026</span>
         </Link>
 
         <button
